@@ -1,0 +1,48 @@
+// maxPX = $s * $steps = 100px
+$space: ('m', 'p');
+$position: ('t', 'r', 'b', 'l');
+$s: 4;
+$steps: 25;
+
+@for $i from 0 through $steps {
+  $step: $i * $s;
+  @each $sp in $space {
+    $spe: if($sp == 'm', 'margin', 'padding');
+    @each $pos in $position {
+      $property: if(
+        $pos == 't',
+        'top',
+        if($pos == 'r', 'right', if($pos == 'b', 'bottom', 'left'))
+      );
+      .#{$sp}-#{$pos}-#{$step} {
+        #{$spe}-#{$property}: #{$step}px !important;
+      }
+    }
+  }
+}
+
+/* space for flex !!!
+ --------------------------------- */
+.m-t-a {
+  margin-top: auto !important;
+}
+
+.m-r-a {
+  margin-right: auto !important;
+}
+
+.m-b-a {
+  margin-bottom: auto !important;
+}
+
+.m-l-a {
+  margin-left: auto !important;
+}
+
+.m-t-6 {
+  margin-top: 6px !important;
+}
+
+.m-b-6 {
+  margin-bottom: 6px !important;
+}

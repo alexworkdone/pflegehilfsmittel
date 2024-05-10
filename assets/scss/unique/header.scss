@@ -1,0 +1,31 @@
+.header {
+  position: relative;
+  z-index: 11;
+  padding: 24px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 900px) {
+  .header {
+    padding: 12px 0;
+
+    .btn-medium {
+      min-width: 38px;
+      min-height: 38px;
+      padding: 8px;
+      font-size: 18px;
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .header {
+    padding: 18px 0;
+
+    .logo {
+      height: 28px;
+    }
+  }
+}

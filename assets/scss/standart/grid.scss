@@ -1,0 +1,54 @@
+$grid-breakpoints: (
+  xl: 1400px,
+  lg: 991px,
+  md: 768px,
+  sm: 576px,
+);
+
+$count: 12;
+
+.row {
+  margin-left: calc(var(--space) * -1);
+  margin-right: calc(var(--space) * -1);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+@for $i from 1 through $count {
+  .col-#{$i} {
+    padding-left: var(--space);
+    padding-right: var(--space);
+    flex: 0 0 calc(100% / #{$count} * #{$i});
+    max-width: calc(100% / #{$count} * #{$i});
+  }
+}
+
+@each $breakpoint, $value in $grid-breakpoints {
+  @media only screen and (max-width: $value) {
+    @for $i from 1 through $count {
+      .col-#{$breakpoint}-#{$i} {
+        padding-left: var(--space);
+        padding-right: var(--space);
+        flex: 0 0 calc(100% / #{$count} * #{$i});
+        max-width: calc(100% / #{$count} * #{$i});
+      }
+    }
+
+    .#{$breakpoint}-hidden {
+      display: none !important;
+    }
+
+    .#{$breakpoint}-visible-flex {
+      display: flex !important;
+    }
+
+    .#{$breakpoint}-visible {
+      display: block !important;
+    }
+  }
+}
+
+.col-offset-6 {
+  margin-left: calc(100% / 12) * 6;
+}

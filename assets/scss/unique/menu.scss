@@ -1,0 +1,146 @@
+.menu {
+  &-main {
+    margin: -12px;
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  &-link {
+    padding: 12px 24px;
+    color: var(--color-main);
+    font-size: 18px;
+    font-weight: 500;
+    white-space: nowrap;
+
+    &:hover {
+      color: var(--primary);
+    }
+
+    &.nuxt-link-exact-active {
+      pointer-events: none;
+    }
+
+    &.nuxt-link-exact-active,
+    &:hover {
+      &,
+      > a {
+        color: var(--primary);
+      }
+    }
+
+    @media screen and (max-width: 991px) {
+      padding-left: 12px;
+      padding-right: 12px;
+      font-size: 15px;
+    }
+  }
+
+  &-burger {
+    flex-basis: 25px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    &-in {
+      position: relative;
+      width: 22px;
+      height: 22px;
+    }
+
+    &_1,
+    &_2,
+    &_3 {
+      position: absolute;
+      height: 1px;
+      width: 25px;
+      background-color: var(--primary);
+      transition: all 0.2s linear;
+    }
+
+    &_1 {
+      top: 0;
+      transform-origin: 0 50%;
+    }
+
+    &_2 {
+      top: calc(50% - 1px);
+    }
+
+    &_3 {
+      bottom: 0;
+      transform-origin: 0 50%;
+    }
+
+    &:hover {
+      .menu-burger {
+        &_1,
+        &_2,
+        &_3 {
+          transform: scale(1.2);
+        }
+      }
+    }
+
+    &.active {
+      .menu-burger {
+        &_1 {
+          width: 30px;
+          transform: rotate(43deg);
+        }
+
+        &_2 {
+          transform-origin: 50% 50%;
+          transform: scale(0);
+          transition: all 0.2s linear;
+        }
+
+        &_3 {
+          width: 30px;
+          transform: rotate(-43deg);
+        }
+      }
+    }
+  }
+}
+
+.menu-mobile {
+  position: absolute;
+  top: var(--height-header);
+  left: calc(var(--padding-side) * -1);
+  right: calc(var(--padding-side) * -1);
+  z-index: -1;
+  margin: 0;
+  padding: 48px var(--padding-side) 12px;
+  display: block;
+  background-color: var(--primary);
+  transform-origin: top;
+  transform: rotateX(90deg);
+  box-shadow: 0 27px 33.3px 0 #18606463;
+
+  .menu-link {
+    margin: 0 0 36px;
+    padding: 0;
+    display: block;
+    color: var(--light);
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 1.2;
+    text-align: center;
+
+    &.nuxt-link-exact-active,
+    &:hover {
+      text-shadow: 2px 2px 0 var(--secondary);
+    }
+  }
+
+  &.active {
+    transform: rotateX(0deg);
+  }
+}
+
+.header:has(.menu-burger:hover) .menu-mobile {
+  transition: var(--transition);
+}

@@ -1,0 +1,18 @@
+$base-font-path: '/fonts';
+
+@mixin font-face($font-family, $weight, $file-name) {
+  @font-face {
+    font-family: '#{$font-family}';
+    src: url('#{$base-font-path}/#{$font-family}/#{$file-name}.woff2')
+        format('woff2'),
+      url('#{$base-font-path}/#{$font-family}/#{$file-name}.ttf')
+        format('truetype');
+    font-weight: $weight;
+    font-style: normal;
+    font-display: swap;
+  }
+}
+
+@include font-face('Satoshi', 700, 'Satoshi-Bold');
+@include font-face('Satoshi', 500, 'Satoshi-Medium');
+@include font-face('Satoshi', 400, 'Satoshi-Regular');

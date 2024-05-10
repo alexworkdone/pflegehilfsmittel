@@ -1,0 +1,85 @@
+html,
+body,
+#app {
+  min-height: 100vh;
+}
+
+body {
+  position: relative;
+  min-width: 320px;
+  background-color: var(--bg-main);
+  color: var(--color-main);
+  font-family: var(--ff-main);
+  font-size: 16px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  line-height: 1.5;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+
+  @media screen and (max-width: 768px) {
+    --padding-side: 16px;
+  }
+
+  @media screen and (max-width: 510px) {
+    * {
+      word-wrap: break-word;
+      word-break: break-word;
+    }
+  }
+}
+
+pre {
+  margin: 0 auto;
+  width: 500px;
+  font-size: 24px;
+}
+
+.wrapper {
+  margin: 0 auto;
+  padding: 0 var(--padding-side);
+  max-width: var(--max-width);
+  width: 100%;
+
+  &.content-center {
+    min-height: calc(
+      100vh - var(--height-header) - 40px - 40px - var(--height-footer)
+    );
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.relative {
+  position: relative;
+}
+
+*[class*='btn'] {
+  user-select: none;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.w-auto {
+  width: auto !important;
+}
+
+.h-full {
+  height: 100%;
+}
+
+.h-auto {
+  height: auto;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+  outline: 0;
+  cursor: pointer;
+}

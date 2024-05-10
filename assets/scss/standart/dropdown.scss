@@ -1,0 +1,131 @@
+.dropdown {
+  position: relative;
+
+  &-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    z-index: 1000;
+    padding: 10px 0;
+    min-width: 160px;
+    margin: 2px 0 0;
+    list-style: none;
+    background-color: var(--primary);
+    border-radius: var(--border-radius);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+    background-clip: padding-box;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(40px);
+    transition: all var(--transition);
+
+    &.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    li > button {
+      padding: 8px 20px;
+      width: 100%;
+      color: var(--color-main);
+      font-weight: 300;
+      line-height: 1.6;
+      text-align: left;
+      white-space: nowrap;
+
+      &:hover {
+        background-color: var(--primary);
+        color: var(--bg-main);
+      }
+    }
+
+    .divider {
+      height: 1px;
+      margin: 10px 0;
+      overflow: hidden;
+      background-color: var(--border-color);
+    }
+  }
+
+  &-arrow {
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      z-index: 1;
+      height: 1.5px;
+      width: 12px;
+      border-radius: 2px;
+      background-color: var(--primary);
+      transition: var(--transition);
+    }
+
+    &::before {
+      transform: translate(-50%, calc(-50% + 4px)) rotate(-45deg);
+    }
+
+    &::after {
+      transform: translate(-50%, calc(-50% - 4px)) rotate(45deg);
+    }
+  }
+
+  &.active {
+    .dropdown-arrow {
+      &::before,
+      &::after {
+        width: 7px;
+      }
+
+      &::before {
+        transform: translate(calc(-50% - 4px), calc(-50%)) rotate(-45deg);
+      }
+
+      &::after {
+        transform: translate(calc(-50% + 4px), calc(-50%)) rotate(45deg);
+      }
+    }
+  }
+
+  &-sidebar {
+    .dropdown-arrow {
+      position: relative;
+
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: 50%;
+        z-index: 1;
+        height: 1.5px;
+        width: 6.5px;
+        border-radius: 2px;
+        background-color: var(--primary);
+        transition: var(--transition);
+      }
+
+      &::before {
+        transform: translate(0, calc(-50% + 2px)) rotate(-45deg);
+      }
+
+      &::after {
+        transform: translate(0, calc(-50% - 2px)) rotate(45deg);
+      }
+    }
+
+    &.active {
+      .dropdown-arrow {
+        &::before {
+          transform: translate(4px, calc(-50%)) rotate(-45deg);
+        }
+
+        &::after {
+          transform: translate(0, calc(-50%)) rotate(45deg);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+/* scrollbar -------------------------------------------------------- */
+.main-section {
+  *::-webkit-scrollbar {
+    width: var(--scrollbar);
+    height: var(--scrollbar);
+  }
+
+  *::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-color);
+    border-radius: var(--scrollbar);
+  }
+}
